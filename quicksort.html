@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QuickSort</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>QuickSort</h1>
+    <script>
+        function quickSort(array, inicio, fim) {
+            if (inicio < fim) {
+                const indicePivot = particionar(array, inicio, fim);
+                quickSort(array, inicio, indicePivot - 1);
+                quickSort(array, indicePivot + 1, fim);
+            }
+        }
+
+        function particionar(array, inicio, fim) {
+            const pivot = array[fim];
+            let i = inicio - 1;
+
+            for (let j = inicio; j < fim; j++) {
+                if (array[j] < pivot) {
+                    i++;
+                    const temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+
+            const temp = array[i + 1];
+            array[i + 1] = array[fim];
+            array[fim] = temp;
+
+            return i + 1;
+        }
+
+        function imprimirArray(array) {
+            const result = document.createElement("p");
+            result.textContent = array.join(' ');
+            document.body.appendChild(result);
+        }
+
+        const array = [12, 4, 5, 6, 7, 3, 1, 15];
+
+        const originalArray = document.createElement("p");
+        originalArray.textContent = "Array original: " + array.join(' ');
+        document.body.appendChild(originalArray);
+
+        quickSort(array, 0, array.length - 1);
+
+        const sortedArray = document.createElement("p");
+        sortedArray.textContent = "Array ordenado: " + array.join(' ');
+        document.body.appendChild(sortedArray);
+    </script>
+</body>
+</html>
+

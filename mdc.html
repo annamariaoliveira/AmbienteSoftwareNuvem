@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cálculo do MDC</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cálculo do Máximo Divisor Comum (MDC)</h1>
+    <script>
+        function calcularMDC(a, b) {
+            while (b !== 0) {
+                let temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+
+        const a = parseInt(prompt("Digite o primeiro número inteiro:"));
+        const b = parseInt(prompt("Digite o segundo número inteiro:"));
+        const mdc = calcularMDC(a, b);
+        const resultado = `O Máximo Divisor Comum de ${a} e ${b} é: ${mdc}`;
+
+        const output = document.createElement("p");
+        output.textContent = resultado;
+        document.body.appendChild(output);
+    </script>
+</body>
+</html>

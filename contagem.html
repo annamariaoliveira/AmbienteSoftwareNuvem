@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contagem de Alunos</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        #contagem-form {
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 20px;
+            border: none;
+            background-color: #333;
+            color: white;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #resultado-contagem {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contagem de Alunos</h1>
+    
+    <form id="contagem-form">
+        <label for="quantidade-alunos">Quantidade de Alunos:</label>
+        <input type="number" id="quantidade-alunos" required>
+        <button type="submit">Iniciar Contagem</button>
+    </form>
+
+    <p id="resultado-contagem"></p>
+
+    <script>
+        document.getElementById("contagem-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const quantidadeAlunos = parseInt(document.getElementById("quantidade-alunos").value);
+            let cont = 0;
+
+            for (let i = 0; i < quantidadeAlunos; i++) {
+                const nota = parseInt(prompt("Nota do Aluno " + (i + 1)));
+                if (nota < 50) {
+                    cont++;
+                }
+            }
+
+            document.getElementById("resultado-contagem").textContent = `São ${quantidadeAlunos} alunos. São ${cont} aprovados.`;
+        });
+    </script>
+</body>
+</html>

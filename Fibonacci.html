@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sequência Fibonacci</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .output {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="output">
+        <h1>Sequência Fibonacci</h1>
+        <form id="fibonacci-form">
+            <label for="num-terms">Número de termos:</label>
+            <input type="number" id="num-terms" required>
+            <button type="submit">Gerar Sequência</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("fibonacci-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const numTerms = parseInt(document.getElementById("num-terms").value);
+            const result = generateFibonacci(numTerms);
+            document.getElementById("result").textContent = result;
+        });
+
+        function generateFibonacci(n) {
+            let a = 0;
+            let b = 1;
+            let i = 2;
+            let sequence = "0, 1, ";
+
+            while (i < n) {
+                sequence += a + b + ", ";
+                const temp = a + b;
+                a = b;
+                b = temp;
+                i++;
+            }
+
+            if (i === n) {
+                sequence += a + ", " + b;
+            } else {
+                sequence += a;
+            }
+
+            return "Sequência Fibonacci: " + sequence;
+        }
+    </script>
+</body>
+</html>

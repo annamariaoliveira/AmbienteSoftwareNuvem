@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Soma de Números</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Soma de Números</h1>
+    <script>
+        const numeros = [1, 2, 3, 4, 5];
+        let soma = 0;
+
+        for (let numero of numeros) {
+            soma += numero;
+        }
+
+        const resultado = document.createElement("p");
+        resultado.textContent = "A soma dos números é " + soma;
+        document.body.appendChild(resultado);
+    </script>
+</body>
+</html>
